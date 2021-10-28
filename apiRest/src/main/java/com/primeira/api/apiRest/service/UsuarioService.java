@@ -23,4 +23,21 @@ public class UsuarioService {
 	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
 	}
+	
+	public Usuario update(Integer id, Usuario usuario) {
+		Usuario updateObj = findById(id);
+		updateObj.setNome(usuario.getNome());
+		updateObj.setSenha(usuario.getSenha());
+		return usuarioRepository.save(updateObj);
+	}
+	
+	public void delete(Integer id) {
+		Usuario deleteObj = findById(id);
+		usuarioRepository.delete(deleteObj);
+	}
+	
+	public Usuario create(Usuario usuario) {
+		usuario.setId(null);
+		return usuarioRepository.save(usuario);
+	}
 }
