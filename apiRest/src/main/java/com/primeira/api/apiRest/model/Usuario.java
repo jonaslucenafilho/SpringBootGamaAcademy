@@ -25,9 +25,12 @@ public class Usuario implements Serializable {
 	@NotEmpty
 	@Size(min = 3, max = 100)
 	private String senha;
+		
+	public Usuario() {
+		
+	}
 
-	public Usuario(Integer id, String nome, String senha) {
-		this.id = id;
+	public Usuario(String nome, String senha) {
 		this.nome = nome;
 		this.senha = senha;
 	}

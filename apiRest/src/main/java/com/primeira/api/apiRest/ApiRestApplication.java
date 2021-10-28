@@ -22,8 +22,8 @@ public class ApiRestApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Usuario u1 = new Usuario(null, "Jonas Lucena", "joninhas");
-		Usuario u2 = new Usuario(null, "Marina Andrade", "nari");
+		Usuario u1 = new Usuario("Jonas Lucena", "joninhas");
+		Usuario u2 = new Usuario("Marina Andrade", "nari");
 		
 		usuarioRepository.saveAll(Arrays.asList(u1, u2));	
 	}
