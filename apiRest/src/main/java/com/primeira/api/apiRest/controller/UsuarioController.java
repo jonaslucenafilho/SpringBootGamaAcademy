@@ -1,5 +1,6 @@
 package com.primeira.api.apiRest.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.primeira.api.apiRest.model.Usuario;
 import com.primeira.api.apiRest.service.UsuarioService;
@@ -50,6 +52,7 @@ public class UsuarioController {
 	@PostMapping
 	public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
 		Usuario createObj = usuarioService.create(usuario);
-		return ResponseEntity.ok().body(createObj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createObj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 }

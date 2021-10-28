@@ -37,7 +37,7 @@ public class UsuarioService {
 	}
 	
 	public Usuario create(Usuario usuario) {
-		usuario.setId(null);
-		return usuarioRepository.save(usuario);
+		Usuario usuarioCreate = new Usuario(usuario.getNome(), usuario.getSenha()); 
+		return usuarioRepository.save(usuarioCreate);
 	}
 }
